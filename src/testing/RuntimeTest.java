@@ -25,7 +25,7 @@ public class RuntimeTest {
 		final GroundedTask RAMDPGroot = RAMDPRoot.getAllGroundedTasks(s).get(0);
 
 		SimulatedEnvironment env = new SimulatedEnvironment(domain, s);
-//		VisualActionObserver obs = new VisualActionObserver(domain, TaxiVisualizer.getVisualizer(5, 5));
+//		VisualActionObserver obs = new VisualActionObserver(domain, RockSampleVisualizer.getVisualizer(5, 5));
 //        obs.initGUI();
 //        obs.setDefaultCloseOperation(obs.EXIT_ON_CLOSE);
 //        env.addObservers(obs);

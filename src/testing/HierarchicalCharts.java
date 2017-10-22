@@ -16,11 +16,10 @@ import hierarchy.framework.GroundedTask;
 import hierarchy.framework.Task;
 import ramdp.agent.RAMDPLearningAgent;
 import rmaxq.agent.RmaxQLearningAgent;
-import taxi.TaxiVisualizer;
+import taxi.RockSampleVisualizer;
 import taxi.hierarchies.TaxiHierarchy;
 import taxi.state.TaxiState;
 import taxi.stateGenerator.RandomPassengerTaxiState;
-import taxi.stateGenerator.TaxiStateFactory;
 import utilities.LearningAlgorithmExperimenter;
 
 import java.io.FileNotFoundException;
@@ -47,7 +46,7 @@ public class HierarchicalCharts {
 		hs = new SimpleHashableStateFactory(true);
 
 		if(conf.output.visualizer.enabled) {
-			VisualActionObserver obs = new VisualActionObserver(domain, TaxiVisualizer.getVisualizer(conf.output.visualizer.width, conf.output.visualizer.height));
+			VisualActionObserver obs = new VisualActionObserver(domain, RockSampleVisualizer.getVisualizer(conf.output.visualizer.width, conf.output.visualizer.height));
 			obs.initGUI();
 			obs.setDefaultCloseOperation(obs.EXIT_ON_CLOSE);
 			env.addObservers(obs);

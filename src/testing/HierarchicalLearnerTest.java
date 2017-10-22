@@ -1,15 +1,11 @@
 package testing;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 import burlap.behavior.singleagent.Episode;
 import burlap.behavior.singleagent.auxiliary.EpisodeSequenceVisualizer;
-import burlap.debugtools.RandomFactory;
 import burlap.mdp.core.state.State;
 import burlap.mdp.singleagent.common.VisualActionObserver;
 import burlap.mdp.singleagent.environment.SimulatedEnvironment;
@@ -19,15 +15,12 @@ import burlap.statehashing.simple.SimpleHashableStateFactory;
 import config.taxi.TaxiConfig;
 import hierarchy.framework.GroundedTask;
 import hierarchy.framework.Task;
-import org.yaml.snakeyaml.Yaml;
-import org.yaml.snakeyaml.constructor.Constructor;
 import ramdp.agent.RAMDPLearningAgent;
 import rmaxq.agent.RmaxQLearningAgent;
-import taxi.TaxiVisualizer;
+import taxi.RockSampleVisualizer;
 import taxi.hierarchies.TaxiHierarchy;
 import taxi.state.TaxiState;
 import taxi.stateGenerator.RandomPassengerTaxiState;
-import taxi.stateGenerator.TaxiStateFactory;
 
 public class HierarchicalLearnerTest {
 
@@ -45,7 +38,7 @@ public class HierarchicalLearnerTest {
 		}
 
 		if(conf.output.visualizer.enabled) {
-            VisualActionObserver obs = new VisualActionObserver(groundDomain, TaxiVisualizer.getVisualizer(conf.output.visualizer.width, conf.output.visualizer.height));
+            VisualActionObserver obs = new VisualActionObserver(groundDomain, RockSampleVisualizer.getVisualizer(conf.output.visualizer.width, conf.output.visualizer.height));
 			obs.initGUI();
 			obs.setDefaultCloseOperation(obs.EXIT_ON_CLOSE);
 			env.addObservers(obs);
@@ -62,7 +55,7 @@ public class HierarchicalLearnerTest {
 
 		if(conf.output.visualizer.enabled) {
 			EpisodeSequenceVisualizer ev = new EpisodeSequenceVisualizer
-					(TaxiVisualizer.getVisualizer(conf.output.visualizer.width, conf.output.visualizer.height), groundDomain, episodes);
+					(RockSampleVisualizer.getVisualizer(conf.output.visualizer.width, conf.output.visualizer.height), groundDomain, episodes);
 			ev.setDefaultCloseOperation(ev.EXIT_ON_CLOSE);
 			ev.initGUI();
 		}
@@ -74,7 +67,7 @@ public class HierarchicalLearnerTest {
 		SimulatedEnvironment env = new SimulatedEnvironment(domain, initState);
 
 		if(conf.output.visualizer.enabled) {
-			VisualActionObserver obs = new VisualActionObserver(domain, TaxiVisualizer.getVisualizer(conf.output.visualizer.width, conf.output.visualizer.height));
+			VisualActionObserver obs = new VisualActionObserver(domain, RockSampleVisualizer.getVisualizer(conf.output.visualizer.width, conf.output.visualizer.height));
 			obs.initGUI();
 			obs.setDefaultCloseOperation(obs.EXIT_ON_CLOSE);
 			env.addObservers(obs);
@@ -91,7 +84,7 @@ public class HierarchicalLearnerTest {
 		}
 
         EpisodeSequenceVisualizer ev = new EpisodeSequenceVisualizer
-                (TaxiVisualizer.getVisualizer(conf.output.visualizer.width, conf.output.visualizer.height), domain, episodes);
+                (RockSampleVisualizer.getVisualizer(conf.output.visualizer.width, conf.output.visualizer.height), domain, episodes);
         ev.setDefaultCloseOperation(ev.EXIT_ON_CLOSE);
         ev.initGUI();
 	}

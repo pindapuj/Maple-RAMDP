@@ -14,10 +14,9 @@ import burlap.statehashing.HashableStateFactory;
 import burlap.statehashing.simple.SimpleHashableStateFactory;
 import config.taxi.TaxiConfig;
 import hierarchy.framework.Task;
-import taxi.TaxiVisualizer;
+import taxi.RockSampleVisualizer;
 import taxi.hierarchies.TaxiHierarchy;
 import taxi.state.TaxiState;
-import taxi.stateGenerator.TaxiStateFactory;
 
 public class AMDPPlanTest {
 	
@@ -31,7 +30,7 @@ public class AMDPPlanTest {
 		}
 
 		EpisodeSequenceVisualizer ev = new EpisodeSequenceVisualizer
-				(TaxiVisualizer.getVisualizer(conf.output.visualizer.width, conf.output.visualizer.height), baseDomain, eps);;
+				(RockSampleVisualizer.getVisualizer(conf.output.visualizer.width, conf.output.visualizer.height), baseDomain, eps);;
 		ev.setDefaultCloseOperation(ev.EXIT_ON_CLOSE);
 		ev.initGUI();
 	}

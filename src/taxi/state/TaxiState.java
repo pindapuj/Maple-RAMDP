@@ -13,13 +13,13 @@ import java.util.*;
 public class TaxiState implements MutableOOState, PassengerParameterizable{
 
 	//contains a taxi, passengers, locations and walls
-	private TaxiAgent taxi;
+	private RoverAgent taxi;
 	private Map<String, TaxiPassenger> passengers;
 	private Map<String, TaxiLocation> locations;
 	private Map<String, TaxiWall> walls;
 	
-	public TaxiState(TaxiAgent taxi, List<TaxiPassenger> passengers, List<TaxiLocation> locations,
-			List<TaxiWall> walls) {
+	public TaxiState(RoverAgent taxi, List<TaxiPassenger> passengers, List<TaxiLocation> locations,
+                     List<TaxiWall> walls) {
 		this.taxi = taxi;
 		
 		this.passengers = new HashMap<String, TaxiPassenger>();
@@ -38,8 +38,8 @@ public class TaxiState implements MutableOOState, PassengerParameterizable{
 		}
 	}
 	
-	public TaxiState(TaxiAgent t, Map<String, TaxiPassenger> pass, Map<String, TaxiLocation> locs,
-			Map<String, TaxiWall> walls) {
+	public TaxiState(RoverAgent t, Map<String, TaxiPassenger> pass, Map<String, TaxiLocation> locs,
+                     Map<String, TaxiWall> walls) {
 		this.taxi = t;
 		this.passengers = pass;
 		this.locations = locs;
@@ -129,9 +129,9 @@ public class TaxiState implements MutableOOState, PassengerParameterizable{
 
 	@Override
 	public MutableOOState addObject(ObjectInstance o) {
-		if(o instanceof TaxiAgent || o.className().equals(Taxi.CLASS_TAXI)){
+		if(o instanceof RoverAgent || o.className().equals(Taxi.CLASS_TAXI)){
 			touchTaxi();
-			taxi = (TaxiAgent) o;
+			taxi = (RoverAgent) o;
 		}else if(o instanceof TaxiPassenger || o.className().equals(Taxi.CLASS_PASSENGER)){
 			touchPassengers().put(o.name(), (TaxiPassenger) o);			
 		}else if(o instanceof TaxiLocation || o.className().equals(Taxi.CLASS_LOCATION)){
@@ -155,7 +155,7 @@ public class TaxiState implements MutableOOState, PassengerParameterizable{
 	}
 
 	//touch methods allow a shallow copy of states and a copy of objects only when modified
-	public TaxiAgent touchTaxi(){
+	public RoverAgent touchTaxi(){
 		this.taxi = taxi.copy();
 		return taxi;
 	}
@@ -230,7 +230,7 @@ public class TaxiState implements MutableOOState, PassengerParameterizable{
 //			if(lx == tx && ly == ty)
 //				return loc;
 //		}
-//		return "Not a deot";
+//		return "Not a depot";
 //	}
 
 	public String[] getLocations(){

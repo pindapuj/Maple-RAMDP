@@ -7,7 +7,7 @@ import burlap.debugtools.RandomFactory;
 import burlap.mdp.auxiliary.StateGenerator;
 import burlap.mdp.core.state.State;
 import taxi.Taxi;
-import taxi.state.TaxiAgent;
+import taxi.state.RoverAgent;
 import taxi.state.TaxiLocation;
 import taxi.state.TaxiPassenger;
 import taxi.state.TaxiState;
@@ -22,7 +22,7 @@ public class RandomPassengerTaxiState implements StateGenerator{
 		
 		int tx = (int) (RandomFactory.getMapped(0).nextDouble() * width);
 		int ty = (int) (RandomFactory.getMapped(0).nextDouble() * height);
-		TaxiAgent taxi = new TaxiAgent(Taxi.CLASS_TAXI + 0, tx, ty);
+		RoverAgent taxi = new RoverAgent(Taxi.CLASS_TAXI + 0, tx, ty);
 		
 		List<TaxiLocation> locations = new ArrayList<TaxiLocation>();
 		locations.add(new TaxiLocation(Taxi.CLASS_LOCATION + 0, 0, 4, Taxi.COLOR_RED));

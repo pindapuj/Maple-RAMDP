@@ -4,7 +4,6 @@ package testing;
 import burlap.behavior.singleagent.learning.LearningAgent;
 import burlap.behavior.singleagent.learning.LearningAgentFactory;
 import burlap.mdp.core.state.State;
-import burlap.mdp.singleagent.common.VisualActionObserver;
 import burlap.mdp.singleagent.environment.SimulatedEnvironment;
 import burlap.mdp.singleagent.oo.OOSADomain;
 import burlap.statehashing.HashableStateFactory;
@@ -12,8 +11,6 @@ import burlap.statehashing.simple.SimpleHashableStateFactory;
 import hierarchy.framework.GroundedTask;
 import hierarchy.framework.Task;
 import ramdp.agent.RAMDPLearningAgent;
-import rmaxq.agent.RmaxQLearningAgent;
-import taxi.TaxiVisualizer;
 import taxi.hierarchies.TaxiHierarchy;
 import taxi.state.TaxiState;
 import taxi.stateGenerator.TaxiStateFactory;
@@ -27,7 +24,7 @@ public class RumtimeTest {
 		final GroundedTask RAMDPGroot = RAMDPRoot.getAllGroundedTasks(s).get(0); 
 		
 		SimulatedEnvironment env = new SimulatedEnvironment(domain, s);
-//		VisualActionObserver obs = new VisualActionObserver(domain, TaxiVisualizer.getVisualizer(5, 5));
+//		VisualActionObserver obs = new VisualActionObserver(domain, RockSampleVisualizer.getVisualizer(5, 5));
 //        obs.initGUI();
 //        obs.setDefaultCloseOperation(obs.EXIT_ON_CLOSE);
 //        env.addObservers(obs);
