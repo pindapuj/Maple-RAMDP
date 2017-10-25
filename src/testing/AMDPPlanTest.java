@@ -16,7 +16,7 @@ import config.taxi.TaxiConfig;
 import hierarchy.framework.Task;
 import taxi.RockSampleVisualizer;
 import taxi.hierarchies.TaxiHierarchy;
-import taxi.state.TaxiState;
+import taxi.state.RockSampleState;
 
 public class AMDPPlanTest {
 	
@@ -55,7 +55,7 @@ public class AMDPPlanTest {
 			System.out.println("Using seed: " + conf.stochastic.seed);
 		}
 
-		TaxiState s = conf.generateState();
+		RockSampleState s = conf.generateState();
 		Task RAMDProot = TaxiHierarchy.createAMDPHierarchy(conf.stochastic.correct_move, conf.stochastic.fickle, true);
 		OOSADomain base = TaxiHierarchy.getBaseDomain();
 		plan(conf, RAMDProot, s, new SimpleHashableStateFactory(), base);

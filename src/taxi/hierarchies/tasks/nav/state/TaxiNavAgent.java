@@ -27,7 +27,7 @@ public class TaxiNavAgent extends MutableObject {
 	
 	@Override
 	public String className() {
-		return Taxi.CLASS_TAXI;
+		return Taxi.CLASS_ROVER;
 	}
 
 	@Override

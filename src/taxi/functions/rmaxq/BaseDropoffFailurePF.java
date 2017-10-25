@@ -3,7 +3,7 @@ package taxi.functions.rmaxq;
 import burlap.mdp.core.oo.propositional.PropositionalFunction;
 import burlap.mdp.core.oo.state.OOState;
 import taxi.Taxi;
-import taxi.state.TaxiState;
+import taxi.state.RockSampleState;
 
 public class BaseDropoffFailurePF extends PropositionalFunction {
 
@@ -14,7 +14,7 @@ public class BaseDropoffFailurePF extends PropositionalFunction {
 	@Override
 	public boolean isTrue(OOState s, String... params) {
 		// if the taxi is not at depot or not occupied
-		TaxiState st = (TaxiState) s;
+		RockSampleState st = (RockSampleState) s;
 
 		int tx = (int) st.getTaxiAtt(Taxi.ATT_X);
 		int ty = (int) st.getTaxiAtt(Taxi.ATT_Y);

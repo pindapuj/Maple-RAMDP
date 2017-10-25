@@ -6,7 +6,7 @@ import config.planning.PlanningConfig;
 import config.rmax.RmaxConfig;
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.constructor.Constructor;
-import taxi.state.TaxiState;
+import taxi.state.RockSampleState;
 import taxi.stateGenerator.TaxiStateFactory;
 
 import java.io.File;
@@ -38,7 +38,7 @@ public class TaxiConfig {
         return (TaxiConfig) yaml.load(input);
     }
 
-    public TaxiState generateState() {
+    public RockSampleState generateState() {
         switch (state) {
             case "tiny":
                 return TaxiStateFactory.createTinyState();

@@ -19,7 +19,7 @@ import ramdp.agent.RAMDPLearningAgent;
 import rmaxq.agent.RmaxQLearningAgent;
 import taxi.RockSampleVisualizer;
 import taxi.hierarchies.TaxiHierarchy;
-import taxi.state.TaxiState;
+import taxi.state.RockSampleState;
 import taxi.stateGenerator.RandomPassengerTaxiState;
 
 public class HierarchicalLearnerTest {
@@ -104,7 +104,7 @@ public class HierarchicalLearnerTest {
 			System.exit(404);
 		}
 
-		TaxiState s = conf.generateState();
+		RockSampleState s = conf.generateState();
 		if(conf.agents.contains("ramdp")) {
 			Task RAMDProot = TaxiHierarchy.createAMDPHierarchy(conf.stochastic.correct_move, conf.stochastic.fickle, false);
 			OOSADomain base = TaxiHierarchy.getBaseDomain();

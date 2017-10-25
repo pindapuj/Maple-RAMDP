@@ -3,7 +3,7 @@ package taxi.functions.rmaxq;
 import burlap.mdp.core.oo.propositional.PropositionalFunction;
 import burlap.mdp.core.oo.state.OOState;
 import taxi.Taxi;
-import taxi.state.TaxiState;
+import taxi.state.RockSampleState;
 import taxi.functions.rmaxq.BaseNavigateActionType.NavigeteAction;
 
 public class BaseNavigatePF extends PropositionalFunction {
@@ -13,7 +13,7 @@ public class BaseNavigatePF extends PropositionalFunction {
 
 	@Override
 	public boolean isTrue(OOState s, String... params) {
-		TaxiState st = (TaxiState) s;
+		RockSampleState st = (RockSampleState) s;
 		BaseNavigateActionType anav = new BaseNavigateActionType();
 		NavigeteAction action = anav.associatedAction(params[0]);
 		int tx = (int) st.getTaxiAtt(Taxi.ATT_X);

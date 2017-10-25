@@ -3,7 +3,7 @@ package taxi.functions.rmaxq;
 import burlap.mdp.core.oo.propositional.PropositionalFunction;
 import burlap.mdp.core.oo.state.OOState;
 import taxi.Taxi;
-import taxi.state.TaxiState;
+import taxi.state.RockSampleState;
 
 public class BaseRootCompletedPF extends PropositionalFunction {
 
@@ -13,7 +13,7 @@ public class BaseRootCompletedPF extends PropositionalFunction {
 
 	@Override
 	public boolean isTrue(OOState s, String... params) {
-		TaxiState state = (TaxiState) s;
+		RockSampleState state = (RockSampleState) s;
 
 		for(String passengerName : state.getPassengers()) {
 			boolean inTaxi = (boolean) state.getPassengerAtt(passengerName, Taxi.ATT_IN_TAXI);

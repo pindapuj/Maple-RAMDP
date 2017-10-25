@@ -57,7 +57,7 @@ public class TaxiBringonDomain implements DomainGenerator {
 	public OOSADomain generateDomain() {
 		OOSADomain domain = new OOSADomain();
 		
-		domain.addStateClass(Taxi.CLASS_TAXI, TaxiBringonAgent.class).addStateClass(Taxi.CLASS_PASSENGER, TaxiBringonPassenger.class);
+		domain.addStateClass(Taxi.CLASS_ROVER, TaxiBringonAgent.class).addStateClass(Taxi.CLASS_PASSENGER, TaxiBringonPassenger.class);
 
 		TaxiBringonModel taxiModel = new TaxiBringonModel();
 		FactoredModel model = new FactoredModel(taxiModel, rf, tf);

@@ -3,12 +3,12 @@ package taxi.hierGen.Task5.state;
 import burlap.mdp.auxiliary.StateMapping;
 import burlap.mdp.core.state.State;
 import taxi.Taxi;
-import taxi.state.TaxiState;
+import taxi.state.RockSampleState;
 
 public class Task5StateMapper implements StateMapping {
 	@Override
 	public State mapState(State s) {
-		TaxiState st = (TaxiState) s;
+		RockSampleState st = (RockSampleState) s;
 
 		int tx = (int) st.getTaxiAtt(Taxi.ATT_X);
 		int ty = (int) st.getTaxiAtt(Taxi.ATT_Y);

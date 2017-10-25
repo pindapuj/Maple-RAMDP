@@ -3,7 +3,7 @@ package taxi.functions.rmaxq;
 import burlap.mdp.core.oo.propositional.PropositionalFunction;
 import burlap.mdp.core.oo.state.OOState;
 import taxi.Taxi;
-import taxi.state.TaxiState;
+import taxi.state.RockSampleState;
 
 public class BasePutFailurePF extends PropositionalFunction{
 	//put fail when taxi is empty - no abstraction
@@ -14,7 +14,7 @@ public class BasePutFailurePF extends PropositionalFunction{
 
 	@Override
 	public boolean isTrue(OOState s, String... params) {
-		TaxiState st = (TaxiState) s;
+		RockSampleState st = (RockSampleState) s;
 
 		boolean occupied = false;
 		for(String p : st.getPassengers()) {

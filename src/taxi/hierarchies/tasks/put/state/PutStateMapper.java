@@ -8,7 +8,7 @@ import burlap.mdp.core.state.State;
 import taxi.Taxi;
 import taxi.hierarchies.interfaces.ParameterizedStateMapping;
 import taxi.hierarchies.tasks.put.TaxiPutDomain;
-import taxi.state.TaxiState;
+import taxi.state.RockSampleState;
 
 public class PutStateMapper implements ParameterizedStateMapping {
 
@@ -18,7 +18,7 @@ public class PutStateMapper implements ParameterizedStateMapping {
 		List<TaxiPutPassenger> passengers = new ArrayList<TaxiPutPassenger>();
 		List<TaxiPutLocation> locations = new ArrayList<>();
 
-		TaxiState st = (TaxiState) s;
+		RockSampleState st = (RockSampleState) s;
 
 		// Get Taxi
 		String taxiLocation = TaxiPutDomain.ON_ROAD;
@@ -34,7 +34,7 @@ public class PutStateMapper implements ParameterizedStateMapping {
 				taxiLocation = locName;
 			}
 		}
-		TaxiPutAgent taxi = new TaxiPutAgent(Taxi.CLASS_TAXI, taxiLocation);
+		TaxiPutAgent taxi = new TaxiPutAgent(Taxi.CLASS_ROVER, taxiLocation);
 
 		for(String passengerName : params){
 			String goal = (String) st.getPassengerAtt(passengerName, Taxi.ATT_GOAL_LOCATION);

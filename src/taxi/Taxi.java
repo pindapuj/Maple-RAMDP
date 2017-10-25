@@ -16,7 +16,7 @@ import burlap.statehashing.simple.SimpleHashableStateFactory;
 import taxi.state.RoverAgent;
 import taxi.state.TaxiLocation;
 import taxi.state.TaxiPassenger;
-import taxi.state.TaxiWall;
+import taxi.state.RockSampleWall;
 import taxi.stateGenerator.TaxiStateFactory;
 
 import java.util.ArrayList;
@@ -26,7 +26,7 @@ public class Taxi implements DomainGenerator{
 
 	//public constants for general use
 	//object classes
-	public static final String CLASS_TAXI = 				"Taxi";
+	public static final String CLASS_ROVER = 				"Rover";
 	public static final String CLASS_PASSENGER =			"Passenger";
 	public static final String CLASS_LOCATION = 			"Location";
 	public static final String CLASS_WALL = 				"Wall";
@@ -167,8 +167,8 @@ public class Taxi implements DomainGenerator{
 	public OOSADomain generateDomain() {
 		OOSADomain domain = new OOSADomain();
 		
-		domain.addStateClass(CLASS_TAXI, RoverAgent.class).addStateClass(CLASS_PASSENGER, TaxiPassenger.class)
-				.addStateClass(CLASS_LOCATION, TaxiLocation.class).addStateClass(CLASS_WALL, TaxiWall.class);
+		domain.addStateClass(CLASS_ROVER , RoverAgent.class).addStateClass(CLASS_PASSENGER, TaxiPassenger.class)
+				.addStateClass(CLASS_LOCATION, TaxiLocation.class).addStateClass(CLASS_WALL, RockSampleWall.class);
 		
 		RockSampleModel model = new RockSampleModel(moveDynamics, fickle, fickleProbability);
 		FactoredModel taxiModel = new FactoredModel(model, rf, tf);

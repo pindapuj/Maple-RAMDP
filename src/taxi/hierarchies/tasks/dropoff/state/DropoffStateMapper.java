@@ -7,7 +7,7 @@ import burlap.mdp.auxiliary.StateMapping;
 import burlap.mdp.core.state.State;
 import taxi.Taxi;
 import taxi.hierarchies.tasks.dropoff.TaxiDropoffDomain;
-import taxi.state.TaxiState;
+import taxi.state.RockSampleState;
 
 public class DropoffStateMapper implements StateMapping {
 	//projection function from the base taxi to abstraction 1
@@ -15,7 +15,7 @@ public class DropoffStateMapper implements StateMapping {
 	@Override
 	public State mapState(State s) {
 		List<TaxiDropoffPassenger> passengers = new ArrayList<TaxiDropoffPassenger>();
-		TaxiState st = (TaxiState) s;
+		RockSampleState st = (RockSampleState) s;
 
 		// Get Passengers
 		for(String passengerName : st.getPassengers()){

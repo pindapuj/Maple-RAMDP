@@ -7,7 +7,7 @@ import burlap.mdp.auxiliary.StateMapping;
 import burlap.mdp.core.state.State;
 import taxi.Taxi;
 import taxi.hierarchies.tasks.bringon.TaxiBringonDomain;
-import taxi.state.TaxiState;
+import taxi.state.RockSampleState;
 
 public class BringonStateMapper implements StateMapping {
 	//projection function from the base taxi to abstraction 1
@@ -15,7 +15,7 @@ public class BringonStateMapper implements StateMapping {
 	@Override
 	public State mapState(State s) {
 		List<TaxiBringonPassenger> passengers = new ArrayList<TaxiBringonPassenger>();
-		TaxiState st = (TaxiState) s;
+		RockSampleState st = (RockSampleState) s;
 
 		// Get Taxi
 		String taxiLocation = TaxiBringonDomain.ON_ROAD;
@@ -30,7 +30,7 @@ public class BringonStateMapper implements StateMapping {
 				break;
 			}
 		}
-		TaxiBringonAgent taxi = new TaxiBringonAgent(Taxi.CLASS_TAXI, taxiLocation);
+		TaxiBringonAgent taxi = new TaxiBringonAgent(Taxi.CLASS_ROVER, taxiLocation);
 
 		// Get Passengers
 		for(String passengerName : st.getPassengers()){

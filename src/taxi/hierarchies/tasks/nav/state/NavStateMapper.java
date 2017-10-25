@@ -7,17 +7,17 @@ import burlap.mdp.auxiliary.StateMapping;
 import burlap.mdp.core.state.State;
 import taxi.Taxi;
 import taxi.hierarchies.tasks.nav.TaxiNavDomain;
-import taxi.state.TaxiState;
+import taxi.state.RockSampleState;
 
 public class NavStateMapper implements StateMapping {
 
 	@Override
 	public State mapState(State s) {
-		TaxiState st = (TaxiState) s;
+		RockSampleState st = (RockSampleState) s;
 		
 		int tx = (int) st.getTaxiAtt(TaxiNavDomain.ATT_X);
 		int ty = (int) st.getTaxiAtt(TaxiNavDomain.ATT_Y);
-		TaxiNavAgent taxi = new TaxiNavAgent(Taxi.CLASS_TAXI, tx, ty);
+		TaxiNavAgent taxi = new TaxiNavAgent(Taxi.CLASS_ROVER, tx, ty);
 		
 		List<TaxiNavLocation> locations = new ArrayList<>();
 		for(String locName : st.getLocations()){

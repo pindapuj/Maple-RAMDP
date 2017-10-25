@@ -62,7 +62,7 @@ public class TaxiPutDomain implements DomainGenerator {
 		OOSADomain domain = new OOSADomain();
 		
 		domain.addStateClass(Taxi.CLASS_PASSENGER, TaxiPutPassenger.class)
-			.addStateClass(Taxi.CLASS_TAXI, TaxiPutAgent.class)
+			.addStateClass(Taxi.CLASS_ROVER, TaxiPutAgent.class)
 			.addStateClass(Taxi.CLASS_LOCATION, TaxiPutLocation.class);
 
 		TaxiPutModel tmodel = new TaxiPutModel();

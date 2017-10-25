@@ -70,7 +70,7 @@ public class TaxiGetState implements MutableOOState {
 
 	@Override
 	public List<ObjectInstance> objectsOfClass(String oclass) {
-	    if(oclass.equals(Taxi.CLASS_TAXI))
+	    if(oclass.equals(Taxi.CLASS_ROVER))
 	        return Arrays.<ObjectInstance>asList(taxi);
 		if(oclass.equals(Taxi.CLASS_PASSENGER))
 			return new ArrayList<ObjectInstance>(passengers.values());
@@ -112,7 +112,7 @@ public class TaxiGetState implements MutableOOState {
 
 	@Override
 	public MutableOOState addObject(ObjectInstance o) {
-	    if(o instanceof TaxiGetAgent || o.className().equals(Taxi.CLASS_TAXI)) {
+	    if(o instanceof TaxiGetAgent || o.className().equals(Taxi.CLASS_ROVER)) {
 	    	taxi = (TaxiGetAgent)o;
 		} else if(o instanceof TaxiGetPassenger || o.className().equals(Taxi.CLASS_PASSENGER)){
 			touchPassengers().put(o.name(), (TaxiGetPassenger) o);

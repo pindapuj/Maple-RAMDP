@@ -12,7 +12,7 @@ import hierarchy.framework.GroundedTask;
 import hierarchy.framework.Task;
 import ramdp.agent.RAMDPLearningAgent;
 import taxi.hierarchies.TaxiHierarchy;
-import taxi.state.TaxiState;
+import taxi.state.RockSampleState;
 import taxi.stateGenerator.TaxiStateFactory;
 import utilities.LearningAgentRuntimeAnalizer;
 
@@ -72,8 +72,8 @@ public class RumtimeTest {
 		double gamma = 0.9;
 		double rmax = 20;
 		double maxDelta = 0.01;
-		
-		TaxiState s = TaxiStateFactory.createSmallState();
+
+		RockSampleState s = TaxiStateFactory.createSmallState();
 		Task RAMDProot = TaxiHierarchy.createAMDPHierarchy(correctMoveprob, fickleProb, false);
 		OOSADomain base = TaxiHierarchy.getBaseDomain();
 		Task RMAXQroot = TaxiHierarchy.createRMAXQHierarchy(correctMoveprob, fickleProb);

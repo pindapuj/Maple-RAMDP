@@ -5,7 +5,7 @@ import burlap.mdp.core.oo.state.ObjectInstance;
 import burlap.mdp.core.state.State;
 import burlap.mdp.singleagent.oo.ObjectParameterizedActionType;
 import taxi.Taxi;
-import taxi.state.TaxiState;
+import taxi.state.RockSampleState;
 
 public class BaseDropoffActionType extends ObjectParameterizedActionType {
 
@@ -15,7 +15,7 @@ public class BaseDropoffActionType extends ObjectParameterizedActionType {
 
 	@Override
 	protected boolean applicableInState(State s, ObjectParameterizedAction a) {
-		TaxiState st = (TaxiState) s;
+		RockSampleState st = (RockSampleState) s;
 
 		String[] params = a.getObjectParameters();
 		String passengerName = params[0];

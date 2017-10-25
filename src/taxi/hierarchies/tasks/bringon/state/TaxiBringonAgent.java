@@ -28,7 +28,7 @@ public class TaxiBringonAgent extends MutableObject{
 
 	@Override
 	public String className() {
-		return Taxi.CLASS_TAXI;
+		return Taxi.CLASS_ROVER;
 	}
 
 	@Override

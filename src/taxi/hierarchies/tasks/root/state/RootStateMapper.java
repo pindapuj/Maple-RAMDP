@@ -4,7 +4,7 @@ import burlap.mdp.auxiliary.StateMapping;
 import burlap.mdp.core.state.State;
 import taxi.Taxi;
 import taxi.hierarchies.tasks.root.TaxiRootDomain;
-import taxi.state.TaxiState;
+import taxi.state.RockSampleState;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +13,7 @@ public class RootStateMapper implements StateMapping {
 	@Override
 	public State mapState(State s) {
 		List<TaxiRootPassenger> passengers = new ArrayList<>();
-		TaxiState st = (TaxiState) s;
+		RockSampleState st = (RockSampleState) s;
 
 		for(String passengerName : st.getPassengers()){
 			int px = (int) st.getPassengerAtt(passengerName, Taxi.ATT_X);

@@ -3,7 +3,7 @@ package taxi.rmaxq.functions;
 import burlap.mdp.core.oo.propositional.PropositionalFunction;
 import burlap.mdp.core.oo.state.OOState;
 import taxi.Taxi;
-import taxi.state.TaxiState;
+import taxi.state.RockSampleState;
 
 public class BaseRootPF  extends PropositionalFunction{
 	//root is complet when all pasengers are at their goal and not in taxi
@@ -14,7 +14,7 @@ public class BaseRootPF  extends PropositionalFunction{
 
 	@Override
 	public boolean isTrue(OOState s, String... params) {
-		TaxiState state = (TaxiState) s;
+		RockSampleState state = (RockSampleState) s;
 
 		for(String passengerName : state.getPassengers()) {
 			boolean inTaxi = (boolean) state.getPassengerAtt(passengerName, Taxi.ATT_IN_TAXI);

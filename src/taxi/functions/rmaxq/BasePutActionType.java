@@ -7,7 +7,7 @@ import burlap.mdp.core.action.Action;
 import burlap.mdp.core.action.ActionType;
 import burlap.mdp.core.state.State;
 import taxi.hierarchies.tasks.root.TaxiRootDomain;
-import taxi.state.TaxiState;
+import taxi.state.RockSampleState;
 
 public class BasePutActionType implements ActionType {
 	//pt the passenger that is in taxi at the desired location - no abstraction
@@ -25,7 +25,7 @@ public class BasePutActionType implements ActionType {
 
 	@Override
 	public List<Action> allApplicableActions(State s) {
-		TaxiState state = (TaxiState) s;
+		RockSampleState state = (RockSampleState) s;
 		List<Action> acts = new ArrayList<>();
 		
 		for(String pass : state.getPassengers()){

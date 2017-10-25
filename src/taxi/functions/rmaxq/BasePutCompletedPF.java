@@ -3,7 +3,7 @@ package taxi.functions.rmaxq;
 import burlap.mdp.core.oo.propositional.PropositionalFunction;
 import burlap.mdp.core.oo.state.OOState;
 import taxi.Taxi;
-import taxi.state.TaxiState;
+import taxi.state.RockSampleState;
 
 public class BasePutCompletedPF extends PropositionalFunction{
 	//put is complete when the passenenger is at goal and taxi is empty - no abstraction
@@ -17,7 +17,7 @@ public class BasePutCompletedPF extends PropositionalFunction{
 		String action = params[0];
 		BasePutActionType actyp = new BasePutActionType();
 		BasePutActionType.PutAction a = actyp.associatedAction(action);
-		TaxiState st = (TaxiState) s;
+		RockSampleState st = (RockSampleState) s;
 
 		String passenger = a.getPassenger();
 		boolean inTaxi = (boolean)st.getPassengerAtt(passenger, Taxi.ATT_IN_TAXI);

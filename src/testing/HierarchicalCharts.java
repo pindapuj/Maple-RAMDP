@@ -18,7 +18,7 @@ import ramdp.agent.RAMDPLearningAgent;
 import rmaxq.agent.RmaxQLearningAgent;
 import taxi.RockSampleVisualizer;
 import taxi.hierarchies.TaxiHierarchy;
-import taxi.state.TaxiState;
+import taxi.state.RockSampleState;
 import taxi.stateGenerator.RandomPassengerTaxiState;
 import utilities.LearningAlgorithmExperimenter;
 
@@ -138,7 +138,7 @@ public class HierarchicalCharts {
 			System.exit(404);
 		}
 
-		TaxiState s = conf.generateState();
+		RockSampleState s = conf.generateState();
 		Task RAMDProot = TaxiHierarchy.createAMDPHierarchy(conf.stochastic.correct_move, conf.stochastic.fickle, false);
 		Task hiergenRoot = TaxiHierarchy.createHierGenHierarchy(conf.stochastic.correct_move, conf.stochastic.fickle);
 		OOSADomain base = TaxiHierarchy.getBaseDomain();

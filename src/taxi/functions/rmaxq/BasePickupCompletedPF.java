@@ -3,7 +3,7 @@ package taxi.functions.rmaxq;
 import burlap.mdp.core.oo.propositional.PropositionalFunction;
 import burlap.mdp.core.oo.state.OOState;
 import taxi.Taxi;
-import taxi.state.TaxiState;
+import taxi.state.RockSampleState;
 
 public class BasePickupCompletedPF extends PropositionalFunction {
 
@@ -13,7 +13,7 @@ public class BasePickupCompletedPF extends PropositionalFunction {
 
 	@Override
 	public boolean isTrue(OOState s, String... params) {
-		TaxiState st = (TaxiState) s;
+		RockSampleState st = (RockSampleState) s;
 
 		return (boolean) st.getTaxiAtt(Taxi.ATT_TAXI_OCCUPIED);
 	}

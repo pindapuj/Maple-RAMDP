@@ -7,7 +7,7 @@ import burlap.mdp.core.action.Action;
 import burlap.mdp.core.action.ActionType;
 import burlap.mdp.core.state.State;
 import taxi.hierarchies.tasks.nav.TaxiNavDomain;
-import taxi.state.TaxiState;
+import taxi.state.RockSampleState;
 
 public class BaseNavigateActionType implements ActionType {
 	//nav the taxi to the given goal  - no abstraction
@@ -24,7 +24,7 @@ public class BaseNavigateActionType implements ActionType {
 
 	@Override
 	public List<Action> allApplicableActions(State s) {
-		TaxiState state = (TaxiState) s;
+		RockSampleState state = (RockSampleState) s;
 		List<Action> acts = new ArrayList<Action>();
 		
 		for(String loc : state.getLocations()){

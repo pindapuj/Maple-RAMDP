@@ -5,7 +5,7 @@ import burlap.mdp.core.action.Action;
 import burlap.mdp.core.state.State;
 import burlap.mdp.singleagent.model.RewardFunction;
 import taxi.state.RoverAgent;
-import taxi.state.TaxiState;
+import taxi.state.RockSampleState;
 
 public class RockSampleRewardFunction implements RewardFunction{
 
@@ -63,7 +63,7 @@ public class RockSampleRewardFunction implements RewardFunction{
 		//TaxiState state = (TaxiState) s;
 
 
-		TaxiState state = (TaxiState) sprime;
+		RockSampleState state = (RockSampleState) sprime;
 		RoverAgent rover = state.getTaxi();
 		int roverX = (int) rover.get(Taxi.ATT_X);
 		int roverY = (int) rover.get(Taxi.ATT_Y);

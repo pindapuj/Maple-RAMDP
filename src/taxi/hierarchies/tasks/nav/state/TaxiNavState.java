@@ -75,7 +75,7 @@ public class TaxiNavState implements MutableOOState{
 
 	@Override
 	public List<ObjectInstance> objectsOfClass(String oclass) {
-		if(oclass.equals(Taxi.CLASS_TAXI))
+		if(oclass.equals(Taxi.CLASS_ROVER))
 			return Arrays.<ObjectInstance>asList(taxi);
 		else if(oclass.equals(Taxi.CLASS_LOCATION))
 			return new ArrayList<ObjectInstance>(locations.values());

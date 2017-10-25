@@ -65,7 +65,7 @@ public class TaxiNavDomain implements DomainGenerator {
 	public OOSADomain generateDomain() {
 		OOSADomain domain = new OOSADomain();
 		
-		domain.addStateClass(Taxi.CLASS_TAXI, TaxiNavAgent.class).addStateClass(Taxi.CLASS_LOCATION, TaxiNavLocation.class);
+		domain.addStateClass(Taxi.CLASS_ROVER, TaxiNavAgent.class).addStateClass(Taxi.CLASS_LOCATION, TaxiNavLocation.class);
 		
 		TaxiNavModel taxiModel = new TaxiNavModel();
 		FactoredModel model = new FactoredModel(taxiModel, rf, tf);

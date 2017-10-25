@@ -3,7 +3,7 @@ package taxi.functions.rmaxq;
 import burlap.mdp.core.oo.propositional.PropositionalFunction;
 import burlap.mdp.core.oo.state.OOState;
 import taxi.Taxi;
-import taxi.state.TaxiState;
+import taxi.state.RockSampleState;
 
 public class BaseGetCompletedPF extends PropositionalFunction{ 
 	//get is complete if desired passenger is in taxi  - no abstraction
@@ -17,7 +17,7 @@ public class BaseGetCompletedPF extends PropositionalFunction{
 		String action = params[0];
 		BaseGetActionType actyp = new BaseGetActionType();
 		BaseGetActionType.GetAction a = actyp.associatedAction(action);
-		TaxiState st = (TaxiState) s;
+		RockSampleState st = (RockSampleState) s;
 		
 		return (boolean) st.getPassengerAtt(a.getPassenger(), Taxi.ATT_IN_TAXI);
 	}
