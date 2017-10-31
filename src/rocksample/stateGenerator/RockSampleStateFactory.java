@@ -15,10 +15,13 @@ import java.util.List;
 public class RockSampleStateFactory {
 
     public static RockSampleState createClassicState(){
-        RoverAgent rover = new RoverAgent(RockSample.CLASS_ROVER + 0, 0, 3);
+        RoverAgent rover = new RoverAgent(RockSample.CLASS_ROVER + 0, 0, 2);
 
         List<RockSampleRock> rocks = new ArrayList();
-        rocks.add(new RockSampleRock(RockSample.CLASS_ROCK + 0, 0, 1, "Good"));
+        rocks.add(new RockSampleRock(RockSample.CLASS_ROCK + 0, 0, 4, "Bad"));
+        rocks.add(new RockSampleRock(RockSample.CLASS_ROCK + 1, 2, 3, "Good"));
+        rocks.add(new RockSampleRock(RockSample.CLASS_ROCK + 2, 3, 4, "Bad"));
+        rocks.add(new RockSampleRock(RockSample.CLASS_ROCK + 3, 2, 4, "Bad"));
 
         List<RockSampleWall> walls = new ArrayList();
         walls.add(new RockSampleWall(RockSample.CLASS_WALL + 0, 0, 0, 5, false));

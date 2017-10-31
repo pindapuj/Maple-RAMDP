@@ -242,6 +242,18 @@ public class RockSampleState implements MutableOOState {
         return ret;
     }
 
+    public RockSampleRock getRockAtPoint(int x, int y){
+        List<ObjectInstance> rocks = objectsOfClass(RockSample.CLASS_ROCK);
+        for(ObjectInstance r : rocks){
+            int rx = (int) r.get(RockSample.ATT_X);
+            int ry = (int) r.get(RockSample.ATT_Y);
+            if(rx == x && ry == y){
+                return (RockSampleRock) r;
+            }
+        }
+        return null;
+    }
+
     //test to see if there is a wall on either side of the taxi
     public boolean wallNorth(){
         int tx = (int) rover.get(RockSample.ATT_X);

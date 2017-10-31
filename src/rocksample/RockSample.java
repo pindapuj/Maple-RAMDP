@@ -63,12 +63,14 @@ public class RockSample implements DomainGenerator {
     public static final String ACTION_EAST =				"east";
     public static final String ACTION_SOUTH =				"south";
     public static final String ACTION_WEST = 				"west";
+    public static final String ACTION_SAMPLE =              "sample";
 
     // action indexes
     public static int IND_NORTH = 							0;
     public static int IND_EAST = 							1;
     public static int IND_SOUTH = 							2;
     public static int IND_WEST = 							3;
+    public static int IND_SAMPLE =                          4;
 
     // parameters dictating probabilities of the model
     private RewardFunction rf;
@@ -129,7 +131,10 @@ public class RockSample implements DomainGenerator {
                 new UniversalActionType(ACTION_NORTH),
                 new UniversalActionType(ACTION_SOUTH),
                 new UniversalActionType(ACTION_EAST),
-                new UniversalActionType(ACTION_WEST));
+                new UniversalActionType(ACTION_WEST),
+                new UniversalActionType(ACTION_SAMPLE));
+
+                // check would be object parameterized action
 
         return domain;
     }

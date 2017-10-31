@@ -10,6 +10,7 @@ import burlap.mdp.singleagent.model.statemodel.FullStateModel;
 import java.util.ArrayList;
 import java.util.List;
 
+import rocksample.state.RockSampleRock;
 import rocksample.state.RockSampleState;
 import rocksample.state.RoverAgent;
 
@@ -17,7 +18,6 @@ import rocksample.state.RoverAgent;
  * Created by steph on 10/26/2017.
  */
 public class RockSampleModel implements FullStateModel {
-
     /**
      * the array saying how the probabilities are distributed
      */
@@ -48,8 +48,10 @@ public class RockSampleModel implements FullStateModel {
         int action = actionInd(a);
         RockSampleState rockSampleS = (RockSampleState) s;
 
-        if(action <= RockSample.IND_WEST) {
+        if(action <= RockSample.IND_WEST){
             movement(rockSampleS, action, tps);
+        }else if(action == RockSample.IND_SAMPLE){
+            sampleRock(rockSampleS, action, tps);
         }
         return tps;
     }
@@ -97,6 +99,24 @@ public class RockSampleModel implements FullStateModel {
         }
     }
 
+    public void sampleRock(RockSampleState s, int action, List<StateTransitionProb> tps){
+        RockSampleState ns = s.copy();
+
+        int roverX = (int) s.getRoverAtt(RockSample.ATT_X);
+        int roverY = (int) s.getRoverAtt(RockSample.ATT_Y);
+
+        RockSampleRock rock = ns.getRockAtPoint(roverX, roverY);
+        if (rock != null){
+            int rx = (int) rock.get(RockSample.ATT_X);
+            int ry = (int) rock.get(RockSample.ATT_Y);
+            RockSampleRock nRock = ns.touchRock(rock.name());
+            nRock.set(RockSample.ATT_QUALITY, "Bad");
+
+        }
+
+        tps.add(new StateTransitionProb(ns, 1.));
+    }
+
     public int actionInd(Action a){
         String aname = a.actionName();
         if(aname.startsWith(RockSample.ACTION_NORTH))
@@ -107,6 +127,8 @@ public class RockSampleModel implements FullStateModel {
             return RockSample.IND_SOUTH;
         else if(aname.startsWith(RockSample.ACTION_WEST))
             return RockSample.IND_WEST;
+        else if(aname.startsWith(RockSample.ACTION_SAMPLE))
+            return RockSample.IND_SAMPLE;
         throw new RuntimeException("Invalid action " + aname);
     }
 }
