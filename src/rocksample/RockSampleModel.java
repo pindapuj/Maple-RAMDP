@@ -23,8 +23,19 @@ public class RockSampleModel implements FullStateModel {
      */
     private double[][] moveProbability;
 
+    private boolean noisy;
+
+    private double noisyProbability;
+
+    public RockSampleModel(double[][] moveprob, boolean noisy, double noisyProb) {
+        this.moveProbability = moveprob;
+        this.noisyProbability = noisyProb;
+        this.noisy = noisy;
+    }
+
     public RockSampleModel(double[][] moveprob) {
         this.moveProbability = moveprob;
+        this.noisy = false;
     }
 
     @Override
@@ -52,6 +63,8 @@ public class RockSampleModel implements FullStateModel {
             movement(rockSampleS, action, tps);
         }else if(action == RockSample.IND_SAMPLE){
             sampleRock(rockSampleS, action, tps);
+        }else if(action == RockSample.IND_CHECK){
+            checkRock(rockSampleS, (ObjectParameterizedAction) a, tps);
         }
         return tps;
     }
@@ -59,8 +72,8 @@ public class RockSampleModel implements FullStateModel {
     public void movement(RockSampleState s, int action, List<StateTransitionProb> tps) {
         double[] moveProbabilities = this.moveProbability[action];
 
-        int tx = (int) s.getRoverAtt(RockSample.ATT_X);
-        int ty = (int) s.getRoverAtt(RockSample.ATT_Y);
+        int roverX = (int) s.getRoverAtt(RockSample.ATT_X);
+        int roverY = (int) s.getRoverAtt(RockSample.ATT_Y);
 
         for (int outcome = 0; outcome < moveProbabilities.length; outcome++) {
             double p = moveProbabilities[outcome];
@@ -89,8 +102,8 @@ public class RockSampleModel implements FullStateModel {
                 }
             }
 
-            int nx = tx + dx;
-            int ny = ty + dy;
+            int nx = roverX + dx;
+            int ny = roverY + dy;
             RoverAgent nrover = ns.touchRover();
             nrover.set(RockSample.ATT_X, nx);
             nrover.set(RockSample.ATT_Y, ny);
@@ -111,8 +124,24 @@ public class RockSampleModel implements FullStateModel {
             int ry = (int) rock.get(RockSample.ATT_Y);
             RockSampleRock nRock = ns.touchRock(rock.name());
             nRock.set(RockSample.ATT_QUALITY, "Bad");
-
         }
+
+        tps.add(new StateTransitionProb(ns, 1.));
+    }
+
+    public void checkRock(RockSampleState s, ObjectParameterizedAction a,
+                          List<StateTransitionProb> tps) {
+        String n = a.getObjectParameters()[0];
+        RockSampleState ns = s.copy();
+
+        int rockX = (int) s.getRockAtt(n, RockSample.ATT_X);
+        int rockY = (int) s.getRockAtt(n, RockSample.ATT_Y);
+        String rockQuality = (String) s.getRockAtt(n, RockSample.ATT_QUALITY);
+
+        /*
+         1. Cast rockquality to boolean
+         2. P
+         */
 
         tps.add(new StateTransitionProb(ns, 1.));
     }
@@ -129,6 +158,8 @@ public class RockSampleModel implements FullStateModel {
             return RockSample.IND_WEST;
         else if(aname.startsWith(RockSample.ACTION_SAMPLE))
             return RockSample.IND_SAMPLE;
+        else if(aname.startsWith(RockSample.ACTION_CHECK))
+            return RockSample.IND_CHECK;
         throw new RuntimeException("Invalid action " + aname);
     }
 }

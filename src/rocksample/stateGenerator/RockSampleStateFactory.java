@@ -32,4 +32,3 @@ public class RockSampleStateFactory {
         return new RockSampleState(rover, rocks, walls);
     }
 }
-
