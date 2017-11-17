@@ -1,11 +1,16 @@
 package rocksample;
 
+import burlap.mdp.core.action.ActionType;
 import burlap.mdp.core.oo.OODomain;
 import burlap.mdp.core.oo.propositional.PropositionalFunction;
+import burlap.mdp.singleagent.oo.OOSADomain;
 import burlap.mdp.singleagent.pomdp.PODomain;
 import burlap.mdp.singleagent.pomdp.observations.ObservationFunction;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by steph on 11/9/2017.
@@ -13,8 +18,12 @@ import java.util.List;
  * are partially observable -- taking place of OOSA Domain
  */
 public class POOODomain extends PODomain implements OODomain
-{
+{    protected Map<String, Class<?>> stateClassesMap = new HashMap();
+    protected List<ActionType> actionTypes = new ArrayList();
+    protected Map<String, ActionType> actionMap = new HashMap();
 
+
+    public POOODomain(){};
     @Override
     public List<Class<?>> stateClasses() {
         return null;
@@ -27,7 +36,8 @@ public class POOODomain extends PODomain implements OODomain
 
     @Override
     public POOODomain addStateClass(String s, Class<?> aClass) {
-        return null;
+        this.stateClassesMap.put(s, aClass);
+        return this;
     }
 
     @Override
@@ -46,7 +56,7 @@ public class POOODomain extends PODomain implements OODomain
     }
 
 
-    public ObservationFunction getObserationFunction(){
+    public ObservationFunction getObservationFunction(){
         return this.obsevationFunction ;
     }
 
@@ -55,5 +65,13 @@ public class POOODomain extends PODomain implements OODomain
        this.obsevationFunction = observationFunction;
     }
 
+    /* May need to remove
+    public List<ActionType> getActionTypes() {
+        return new ArrayList(this.actionTypes);
+    }
+
+    public ActionType getAction(String name) {
+        return (ActionType)this.actionMap.get(name);
+    } */
 
 }

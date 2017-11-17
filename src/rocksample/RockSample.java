@@ -4,7 +4,9 @@ import burlap.behavior.singleagent.Episode;
 import burlap.behavior.singleagent.auxiliary.EpisodeSequenceVisualizer;
 import burlap.behavior.singleagent.learning.tdmethods.QLearning;
 import burlap.mdp.auxiliary.DomainGenerator;
+import burlap.mdp.core.Domain;
 import burlap.mdp.core.TerminalFunction;
+import burlap.mdp.core.action.Action;
 import burlap.mdp.core.action.UniversalActionType;
 import burlap.mdp.core.oo.ObjectParameterizedAction;
 import burlap.mdp.core.state.State;
@@ -13,6 +15,7 @@ import burlap.mdp.singleagent.model.FactoredModel;
 import burlap.mdp.singleagent.model.RewardFunction;
 import burlap.mdp.singleagent.oo.OOSADomain;
 import burlap.mdp.singleagent.oo.ObjectParameterizedActionType;
+import burlap.mdp.singleagent.pomdp.observations.ObservationFunction;
 import burlap.statehashing.HashableStateFactory;
 import burlap.statehashing.simple.SimpleHashableStateFactory;
 import rocksample.state.RoverAgent;
@@ -85,7 +88,7 @@ public class RockSample implements DomainGenerator {
 
 
     //observations
-    public String[] observations;
+    public String[] observations = new String[4];
     /**
      * RockSample
      * A RockSample domain generator
@@ -142,9 +145,9 @@ public class RockSample implements DomainGenerator {
     }
 
     @Override
-    public OOSADomain generateDomain() {
-        OOSADomain domain = new OOSADomain();
-
+    public Domain generateDomain() {
+        //OOSADomain domain = new OOSADomain();
+        POOODomain domain = new POOODomain();
         domain.addStateClass(CLASS_ROVER, RoverAgent.class)
                 .addStateClass(CLASS_ROCK, RockSampleRock.class)
                 .addStateClass(CLASS_WALL, RockSampleWall.class);
@@ -162,14 +165,18 @@ public class RockSample implements DomainGenerator {
 
                 // check would be object parameterized action
                 new CheckActionType(ACTION_CHECK, new String[]{CLASS_ROCK}));
-        return domain;
+
+        ObservationFunction of = new RockSampleObservationFunction();
+        domain.setObservationFunction(of);
+
+        return (Domain)domain;
     }
 
 
     public static void main(String[] args) {
         RockSample rocksampleBuild = new RockSample();
-        OOSADomain domain = rocksampleBuild.generateDomain();
-
+        Domain domain_temp = rocksampleBuild.generateDomain();
+        OOSADomain domain = (OOSADomain)domain_temp;
         HashableStateFactory hs = new SimpleHashableStateFactory();
 
         State s = RockSampleStateFactory.createClassicState();

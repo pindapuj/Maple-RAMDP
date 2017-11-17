@@ -1,15 +1,34 @@
 package rocksample;
 
+import burlap.behavior.singleagent.Episode;
+import burlap.behavior.singleagent.auxiliary.EpisodeSequenceVisualizer;
+import burlap.behavior.singleagent.learning.tdmethods.QLearning;
 import burlap.mdp.auxiliary.DomainGenerator;
+import burlap.mdp.core.Domain;
 import burlap.mdp.core.TerminalFunction;
 import burlap.mdp.core.action.UniversalActionType;
+import burlap.mdp.core.state.State;
+import burlap.mdp.singleagent.SADomain;
+import burlap.mdp.singleagent.environment.Environment;
+import burlap.mdp.singleagent.environment.SimulatedEnvironment;
 import burlap.mdp.singleagent.model.FactoredModel;
 import burlap.mdp.singleagent.model.RewardFunction;
 import burlap.mdp.singleagent.oo.OOSADomain;
+import burlap.mdp.singleagent.pomdp.SimulatedPOEnvironment;
+import burlap.mdp.singleagent.pomdp.observations.ObservationFunction;
+import burlap.shell.EnvironmentShell;
+import burlap.statehashing.HashableStateFactory;
+import burlap.statehashing.simple.SimpleHashableStateFactory;
 import rocksample.state.RockSampleRock;
 import rocksample.state.RockSampleWall;
 import rocksample.state.RoverAgent;
 import rocksample.POOODomain;
+import rocksample.stateGenerator.RockSampleStateFactory;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static java.lang.System.exit;
 
 /**
  * Created by steph on 11/9/2017.
@@ -136,7 +155,44 @@ public class RockSamplePO implements DomainGenerator {
                 // check would be object parameterized action
                 new CheckActionType(ACTION_CHECK, new String[]{CLASS_ROCK}));
 
+        ObservationFunction of = new RockSampleObservationFunction();
+        domain.setObservationFunction(of);
         return domain;
+    }
+
+    public static void main(String[] args) {
+        RockSamplePO rocksampleBuild = new RockSamplePO();
+        POOODomain domain = rocksampleBuild.generateDomain();
+        //Domain domain_temp = (Domain)domain;
+        HashableStateFactory hs = new SimpleHashableStateFactory();
+
+
+        State s = RockSampleStateFactory.createClassicState();
+
+        SimulatedEnvironment env = new SimulatedEnvironment(domain, s);
+        //SimulatedPOEnvironment env = new SimulatedPOEnvironment(domain, s);
+        //Environment envTouse = poEnv;
+        //EnvironmentShell shell = new EnvironmentShell(domain, poEnv);
+
+       // EnvironmentShell shell = new EnvironmentShell(domain, env);
+     //   shell.start();
+
+       List<Episode> eps = new ArrayList<Episode>();
+
+
+        QLearning qagent = new QLearning(domain, 0.95, hs, 0, 0.01);
+
+        for(int i = 0; i < 10; i++){
+            Episode e = qagent.runLearningEpisode(env, 5000);
+            System.out.println(e.rewardSequence);
+            eps.add(e);
+            env.resetEnvironment();
+        }
+
+        EpisodeSequenceVisualizer v = new EpisodeSequenceVisualizer(RockSampleVisualizer.getVisualizer(5, 5),
+                domain, eps);
+        v.setDefaultCloseOperation(v.EXIT_ON_CLOSE);
+        v.initGUI();
     }
 
 }
