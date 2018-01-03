@@ -7,14 +7,14 @@ import burlap.mdp.singleagent.oo.ObjectParameterizedActionType;
 /**
  * Created by steph on 10/28/2017.
  */
-public class CheckActionType extends ObjectParameterizedActionType {
+public class CheckActionType extends ObjectParameterizedActionType{
 
-    public CheckActionType(String name, String[] parameterClasses) {
+    public CheckActionType(String name, String[] parameterClasses){
         super(name, parameterClasses);
     }
 
     @Override
-    protected boolean applicableInState(State s, ObjectParameterizedAction objectParameterizedAction) {
+    protected boolean applicableInState(State s, ObjectParameterizedAction objAction) {
         return true;
     }
 

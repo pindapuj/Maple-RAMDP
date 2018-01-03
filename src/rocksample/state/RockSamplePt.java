@@ -11,14 +11,12 @@ import java.util.List;
  *
  * Abstract point class with x and y attributes.
  */
-public abstract class RockSamplePt extends MutableObject {
+public abstract class RockSamplePt extends MutableObject{
 
     /**
      * default constructor
      */
-    public RockSamplePt()
-    {
-    }
+    public RockSamplePt(){}
 
     /**
      * standard x, y
@@ -28,28 +26,38 @@ public abstract class RockSamplePt extends MutableObject {
             RockSample.ATT_Y
     );
 
-    public RockSamplePt(String name, int x, int y) {
+    // RockSamplePt
+    // Given a name, an x value, and a y value, creates a new point
+    public RockSamplePt(String name, int x, int y){
         this(name, (Object) x, (Object) y);
     }
 
-    private RockSamplePt(String name, Object x, Object y) {
+    // RockSamplePt
+    // Given a name, an x, and a y, sets the new point values
+    private RockSamplePt(String name, Object x, Object y){
         this.set(RockSample.ATT_X, x);
         this.set(RockSample.ATT_Y, y);
         this.setName(name);
     }
 
+    // className
+    // Returns the name of the class
     @Override
-    public String className() {
+    public String className(){
         return RockSample.CLASS_PT;
     }
 
+    // copy
+    // Returns copy of point
     @Override
-    public RockSamplePt copy() {
+    public RockSamplePt copy(){
         return (RockSamplePt) copyWithName(name());
     }
 
+    // variableKeys
+    // Returns all of the keys
     @Override
-    public List<Object> variableKeys() {
+    public List<Object> variableKeys(){
         return keys;
     }
 }

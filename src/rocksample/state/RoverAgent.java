@@ -23,28 +23,34 @@ public class RoverAgent extends RockSamplePt {
     /**
      *      Constructors
      */
-    public RoverAgent(String name, int x, int y) {
+    public RoverAgent(String name, int x, int y){
         this(name, (Object) x, (Object) y);
     }
 
-    private RoverAgent(String name, Object x, Object y) {
+    private RoverAgent(String name, Object x, Object y){
         this.set(RockSample.ATT_X, x);
         this.set(RockSample.ATT_Y, y);
         this.setName(name);
     }
 
+    // className
+    // Returns the name of the class
     @Override
-    public String className() {
+    public String className(){
         return RockSample.CLASS_ROVER;
     }
 
+    // copy
+    // Returns a copy of the agent
     @Override
-    public RoverAgent copy() {
+    public RoverAgent copy(){
         return (RoverAgent) copyWithName(name());
     }
 
+    // copyWithName
+    // Given the name of the agent, return a copy of that agent
     @Override
-    public ObjectInstance copyWithName(String objectName) {
+    public ObjectInstance copyWithName(String objectName){
         return new RoverAgent(
                 objectName,
                 get(RockSample.ATT_X),
@@ -52,8 +58,10 @@ public class RoverAgent extends RockSamplePt {
         );
     }
 
+    // variableKeys
+    // Returns all of the keys
     @Override
-    public List<Object> variableKeys() {
+    public List<Object> variableKeys(){
         return keys;
     }
 }

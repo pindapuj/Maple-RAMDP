@@ -10,9 +10,10 @@ import rocksample.RockSample;
 /**
  * Created by steph on 10/26/2017.
  */
+
 public class RockSampleRock extends RockSamplePt {
     /**
-     * x, y
+     *      x, y
      */
     private final static List<Object> keys = Arrays.<Object>asList(
             RockSample.ATT_X,
@@ -21,7 +22,7 @@ public class RockSampleRock extends RockSamplePt {
     );
 
     /**
-     * Constructors
+     *      Constructors
      */
     public RockSampleRock(String name, int x, int y, String quality) {
         this(name, (Object) x, (Object) y, (Object) quality);

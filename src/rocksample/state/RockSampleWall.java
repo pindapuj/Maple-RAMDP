@@ -22,11 +22,20 @@ public class RockSampleWall extends MutableObject {
             RockSample.ATT_IS_HORIZONTAL
     );
 
-    public RockSampleWall(String name, int startX, int startY, int length, boolean isHorizontal) {
-        this(name, (Object) startX, (Object) startY, (Object) length, (Object) isHorizontal);
+    public RockSampleWall(String name,
+                          int startX,
+                          int startY,
+                          int length,
+                          boolean isHorizontal){
+        this(name, (Object) startX, (Object) startY,
+                (Object) length, (Object) isHorizontal);
     }
 
-    public RockSampleWall(String name, Object startX, Object startY, Object length, Object isHorizontal) {
+    public RockSampleWall(String name,
+                          Object startX,
+                          Object startY,
+                          Object length,
+                          Object isHorizontal){
         this.set(RockSample.ATT_START_X, startX);
         this.set(RockSample.ATT_START_Y, startY);
         this.set(RockSample.ATT_LENGTH, length);
@@ -35,17 +44,17 @@ public class RockSampleWall extends MutableObject {
     }
 
     @Override
-    public String className() {
+    public String className(){
         return RockSample.CLASS_WALL;
     }
 
     @Override
-    public RockSampleWall copy() {
+    public RockSampleWall copy(){
         return (RockSampleWall) copyWithName(name());
     }
 
     @Override
-    public ObjectInstance copyWithName(String objectName) {
+    public ObjectInstance copyWithName(String objectName){
         return new RockSampleWall(
                 objectName,
                 get(RockSample.ATT_START_X),
@@ -56,7 +65,7 @@ public class RockSampleWall extends MutableObject {
     }
 
     @Override
-    public List<Object> variableKeys() {
+    public List<Object> variableKeys(){
         return keys;
     }
 }
