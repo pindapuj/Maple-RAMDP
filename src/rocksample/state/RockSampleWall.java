@@ -1,8 +1,5 @@
 package rocksample.state;
 
-/**
- * Created by steph on 10/26/2017.
- */
 import java.util.Arrays;
 import java.util.List;
 
@@ -10,10 +7,16 @@ import burlap.mdp.core.oo.state.ObjectInstance;
 import rocksample.RockSample;
 import utilities.MutableObject;
 
+/**
+ * Created by steph on 10/26/2017.
+ *
+ * Wall class with x, y, length, and horizontal attributes.
+ */
+
 public class RockSampleWall extends MutableObject {
 
     /**
-     * contains startx and y and length and if it is horizontal
+     *      Contains startx and y and length and if it is horizontal
      */
     private final static List<Object> keys = Arrays.<Object>asList(
             RockSample.ATT_START_X,
@@ -22,19 +25,24 @@ public class RockSampleWall extends MutableObject {
             RockSample.ATT_IS_HORIZONTAL
     );
 
-    public RockSampleWall(String name,
-                          int startX,
-                          int startY,
-                          int length,
+    /**
+     *      Constructors
+     */
+    // RockSampleWall
+    // Given a name, a start x, a start y, a length, and whether or not the wall
+    // is horizontal, creates a wall object
+    public RockSampleWall(String name, int startX,
+                          int startY, int length,
                           boolean isHorizontal){
         this(name, (Object) startX, (Object) startY,
                 (Object) length, (Object) isHorizontal);
     }
 
-    public RockSampleWall(String name,
-                          Object startX,
-                          Object startY,
-                          Object length,
+    // RockSampleWall
+    // Given a name, a start x, a start y, a length, and whether or not the wall
+    // is horizontal, creates a wall object
+    public RockSampleWall(String name, Object startX,
+                          Object startY, Object length,
                           Object isHorizontal){
         this.set(RockSample.ATT_START_X, startX);
         this.set(RockSample.ATT_START_Y, startY);
@@ -43,16 +51,15 @@ public class RockSampleWall extends MutableObject {
         this.setName(name);
     }
 
-    @Override
-    public String className(){
-        return RockSample.CLASS_WALL;
-    }
-
+    // copy
+    // Returns a copy of the wall
     @Override
     public RockSampleWall copy(){
         return (RockSampleWall) copyWithName(name());
     }
 
+    // copyWithName
+    // Given a wall, makes a copy of the wall and returns
     @Override
     public ObjectInstance copyWithName(String objectName){
         return new RockSampleWall(
@@ -64,6 +71,18 @@ public class RockSampleWall extends MutableObject {
         );
     }
 
+    /**
+     *      Accessors & Mutators
+     */
+    // className
+    // Returns the name of the class
+    @Override
+    public String className(){
+        return RockSample.CLASS_WALL;
+    }
+
+    // variableKeys
+    // Returns all of the keys
     @Override
     public List<Object> variableKeys(){
         return keys;

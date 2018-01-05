@@ -9,7 +9,6 @@ import rocksample.RockSample;
 
 import java.util.*;
 
-import static rocksample.RockSamplePO.NUM_ROCKS;
 
 /**
  * Created by steph on 10/26/2017.
@@ -25,7 +24,6 @@ public class RockSampleState implements MutableOOState {
     /**
      *     Private variables
      */
-
     private RoverAgent rover;                       // the agent in the domain
     private Map<String, RockSampleWall> walls;      // the walls of the domain
     private Map<String, RockSampleRock> rocks;      // the rocks in the domain
@@ -33,7 +31,6 @@ public class RockSampleState implements MutableOOState {
     /**
      *      Constructors
      */
-
     // RockSampleState
     // Given a rover agent and a list of walls, constructs a RockSampleState
     public RockSampleState(RoverAgent rover, List<RockSampleRock> rocks, List<RockSampleWall> walls) {
@@ -58,14 +55,16 @@ public class RockSampleState implements MutableOOState {
         this.walls = walls;
     }
 
+    // RockSampleState
+    // Given a name of a rock and a quality of a rock, constructs a rocksample
+    // state with the rock assigned to that quality
     public RockSampleState(String name, String rockQual) {
         set(name, rockQual);
     };
 
     /**
-     *      Getters & setters for RockSampleState
+     *      Accessors & Mutators
      */
-
     // get
     // Given a variable key, returns the object that corresponds to that key
     @Override
@@ -212,7 +211,7 @@ public class RockSampleState implements MutableOOState {
     // renameObject
     // Throws exception
     @Override
-    public MutableOOState renameObject(String objectName, String newName){
+    public MutableOOState renameObject(String objectName, String newName) {
         throw new RuntimeException("Rename not implemented");
     }
 
@@ -221,7 +220,6 @@ public class RockSampleState implements MutableOOState {
      *      Touch methods - allow shallow copy of states and copy of objects
      *      only when modified
      */
-
     // touchRover
     // Returns a shallow copy of the rover agent
     public RoverAgent touchRover() {

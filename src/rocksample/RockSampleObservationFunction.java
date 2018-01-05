@@ -1,23 +1,17 @@
 package rocksample;
 
 import burlap.debugtools.RandomFactory;
-import burlap.mdp.core.StateTransitionProb;
 import burlap.mdp.core.action.Action;
 import burlap.mdp.core.oo.ObjectParameterizedAction;
 import burlap.mdp.core.state.State;
 import burlap.mdp.singleagent.pomdp.observations.DiscreteObservationFunction;
-import burlap.mdp.singleagent.pomdp.observations.ObservationFunction;
 import burlap.mdp.singleagent.pomdp.observations.ObservationProbability;
 import burlap.mdp.singleagent.pomdp.observations.ObservationUtilities;
-import rocksample.state.RockSampleRock;
 import rocksample.state.RockSampleState;
-import rocksample.stateGenerator.RockSampleStateFactory;
 
-//import burlap.mdp.singleagent.GroundedAction;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import static rocksample.RockSamplePO.*;
 

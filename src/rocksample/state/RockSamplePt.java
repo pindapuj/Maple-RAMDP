@@ -7,24 +7,27 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Created by steph on 10/26/2017.
+ *  Created by steph on 10/26/2017.
  *
- * Abstract point class with x and y attributes.
+ *  Abstract point class with x and y attributes.
  */
+
 public abstract class RockSamplePt extends MutableObject{
 
     /**
-     * default constructor
-     */
-    public RockSamplePt(){}
-
-    /**
-     * standard x, y
+     *      Standard x, y
      */
     private final static List<Object> keys = Arrays.<Object>asList(
             RockSample.ATT_X,
             RockSample.ATT_Y
     );
+
+    /**
+     *      Constructors
+     */
+    // RockSamplePt
+    // Default constructor
+    public RockSamplePt(){}
 
     // RockSamplePt
     // Given a name, an x value, and a y value, creates a new point
@@ -40,18 +43,21 @@ public abstract class RockSamplePt extends MutableObject{
         this.setName(name);
     }
 
-    // className
-    // Returns the name of the class
-    @Override
-    public String className(){
-        return RockSample.CLASS_PT;
-    }
-
     // copy
     // Returns copy of point
     @Override
     public RockSamplePt copy(){
         return (RockSamplePt) copyWithName(name());
+    }
+
+    /**
+     *      Accessors & Mutators
+     */
+    // className
+    // Returns the name of the class
+    @Override
+    public String className(){
+        return RockSample.CLASS_PT;
     }
 
     // variableKeys

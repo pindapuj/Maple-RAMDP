@@ -9,6 +9,6 @@ import java.util.List;
 /**
  * Created by steph on 12/7/2017.
  */
-public abstract class OOTabularBeliefState extends TabularBeliefState implements OOState{
+public abstract class OOTabularBeliefState extends TabularBeliefState implements OOState {
 
 }

@@ -9,11 +9,14 @@ import rocksample.RockSample;
 
 /**
  * Created by steph on 10/26/2017.
+ *
+ * Rover agent class (extends point class) with x and y attributes.
  */
+
 public class RoverAgent extends RockSamplePt {
 
     /**
-     * x, y
+     *      x, y
      */
     private final static List<Object> keys = Arrays.<Object>asList(
             RockSample.ATT_X,
@@ -23,21 +26,18 @@ public class RoverAgent extends RockSamplePt {
     /**
      *      Constructors
      */
+    // RoverAgent
+    // Given a name, an x, and a y, constructs a new rover agent
     public RoverAgent(String name, int x, int y){
         this(name, (Object) x, (Object) y);
     }
 
+    // RoverAgent
+    // Given a name, an x, and a y, constructs a new rover agent
     private RoverAgent(String name, Object x, Object y){
         this.set(RockSample.ATT_X, x);
         this.set(RockSample.ATT_Y, y);
         this.setName(name);
-    }
-
-    // className
-    // Returns the name of the class
-    @Override
-    public String className(){
-        return RockSample.CLASS_ROVER;
     }
 
     // copy
@@ -56,6 +56,17 @@ public class RoverAgent extends RockSamplePt {
                 get(RockSample.ATT_X),
                 get(RockSample.ATT_Y)
         );
+    }
+
+    /**
+     *      Accessors & Mutators
+     */
+
+    // className
+    // Returns the name of the class
+    @Override
+    public String className(){
+        return RockSample.CLASS_ROVER;
     }
 
     // variableKeys

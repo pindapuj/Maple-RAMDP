@@ -1,6 +1,5 @@
 package rocksample.POOO;
 
 
-public class POOOTabularBeliefState  {
-
+public class POOOTabularBeliefState {
 }
